@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Día Internacional de los Trabajadores | Bolivia</title>
+  <!-- Bootstrap 5 CSS + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    body {
+      background: #fef9e6;
+      font-family: 'Segoe UI', system-ui;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .hero-section {
+      background: linear-gradient(135deg, #b22234 0%, #8b1a1a 100%);
+      color: white;
+      padding: 24px 16px;       
+      border-radius: 0 0 24px 24px;  
+      margin-bottom: 32px;      
+    }
+  /* Reemplaza la sección del footer en tu style con esto */
+  footer {
+    background-color: #1e2a3a;
+    color: #f8f9fa;
+    margin-top: 0;           /* ← Cambia 250px a 0 */
+    padding: 40px 0;         /* ← Reduce el padding para que no sea tan grande */
+    width: 100%;             /* Asegura que ocupe todo el ancho */
+  }
+    footer a {
+      color: #ffc107;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #ffda6a;
+    }
+    .galeria-img {
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+    .galeria-img:hover {
+      transform: scale(1.02);
+    }
+    .card-img-top-custom {
+      height: 200px;
+      object-fit: cover;
+    }
+    .accordion-button:not(.collapsed) {
+      background-color: #ffe6cc;
+      color: #8b1a1a;
+    }
+    .table-derechos th {
+      background-color: #b22234;
+      color: white;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #fef9e6;
+      font-family: 'Segoe UI', system-ui;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+      padding-top: 20px; 
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== NAVBAR COMÚN ==================== -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+  <div class="container">
+    <a class="navbar-brand" href="#" data-page="inicio">
+      <i class="bi bi-briefcase-fill"></i> 1ro de Mayo | Trabajadores Bolivia
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrincipal">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarPrincipal">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#" data-page="inicio">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-page="historia">Historia</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-page="derechos">Derechos laborales</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-page="galeria">Galería</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-page="personajes">Personajes bolivianos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-page="feriado">Feriado en Bolivia</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-page="contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENEDOR PRINCIPAL -->
+<main id="contenido-principal" class="container my-4">
+  <div class="text-center p-5">
+    <div class="spinner-border text-danger" role="status"></div>
+    <p>Cargando sitio del trabajador...</p>
+  </div>
+</main>
+
+<!-- FOOTER (datos personales) -->
+<footer class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-md-start">
+        <p class="mb-1" style="font-size: 25px;"> Estudiante: Andrade Tarifa Abel Hugo</p>
+        <p class="mb-1" style="font-size: 25px;"> C.I.:10928685 | Carrera: Informática</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <p class="mb-1" style="font-size: 25px;"> 2026 - El homenaje al Día Internacional de los Trabajadores</p>
+        <p class="mb-0" style="font-size: 25px;"> Bolivia, 1ro de Mayo</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Función para cargar cada página dinámicamente
+  function cargarPagina(pagina) {
+    const contenedor = document.getElementById('contenido-principal');
+    contenedor.style.opacity = '0.5';
+    
+    setTimeout(() => {
+      let contenidoHTML = '';
+      
+      switch(pagina) {
+        case 'inicio':
+          contenidoHTML = paginaInicio();
+          break;
+        case 'historia':
+          contenidoHTML = paginaHistoria();
+          break;
+        case 'derechos':
+          contenidoHTML = paginaDerechos();
+          break;
+        case 'galeria':
+          contenidoHTML = paginaGaleria();
+          break;
+        case 'personajes':
+          contenidoHTML = paginaPersonajes();
+          break;
+        case 'feriado':
+          contenidoHTML = paginaFeriado();
+          break;
+        case 'contacto':
+          contenidoHTML = paginaContacto();
+          break;
+        default:
+          contenidoHTML = paginaInicio();
+      }
+      contenedor.innerHTML = contenidoHTML;
+      contenedor.style.opacity = '1';
+    }, 50);
+  }
+
+  // ==================== PÁGINA INICIO (CARRUSEL) ====================
+  function paginaInicio() {
+    return `
+      <div class="hero-section text-center">
+        <h1 class="display-5 fw-bold"><i class="bi bi-people-fill"></i> Día Internacional de los Trabajadores</h1>
+        <p class="lead">1 de Mayo: Lucha, unidad y conquistas laborales en Bolivia y el mundo</p>
+      </div>
+      
+      <!-- CARRUSEL (con 5+ imágenes) -->
+      <div id="carouselTrabajadores" class="carousel slide carousel-fade shadow rounded mb-5" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselTrabajadores" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#carouselTrabajadores" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#carouselTrabajadores" data-bs-slide-to="2"></button>
+          <button type="button" data-bs-target="#carouselTrabajadores" data-bs-slide-to="3"></button>
+          <button type="button" data-bs-target="#carouselTrabajadores" data-bs-slide-to="4"></button>
+        </div>
+        <div class="carousel-inner rounded-4">
+          <div class="carousel-item active">
+            <img src="https://www.colombiainforma.info/wp-content/uploads/2018/05/Chicago_1-de-mayo.jpg" class="d-block w-100" alt="Mártires de Chicago" style="height: 380px; object-fit: cover;">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+              <h5>Mártires de Chicago (1886)</h5>
+              <p>Origen del 1ro de Mayo: lucha por jornada laboral de 8 horas.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV6nMEpZa_8OiMkHiyCxfwzagmIjV7k7Luxw&s" class="d-block w-100" alt="Mineros bolivianos" style="height: 380px; object-fit: cover;">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+              <h5>Mineros bolivianos</h5>
+              <p>Legado sindical y conquistas obreras en Bolivia.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://elanlegal.com.mx/wp-content/uploads/2021/12/Seguridad-1.jpg" class="d-block w-100" alt="Derechos laborales" style="height: 380px; object-fit: cover;">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+              <h5>Derechos laborales</h5>
+              <p>Salarios justos, seguridad social y sindicalización.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://rtvu.uto.edu.bo/wp-content/uploads/2025/12/COB.webp" class="d-block w-100" alt="Marcha 1ro de mayo" style="height: 380px; object-fit: cover;">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+              <h5>Movilización obrera</h5>
+              <p>Bolivia: Central Obrera Boliviana (COB) histórica.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLnHHxTb3IZETy6wvHOjLrs8y0XXgqFpmLzQ&s" class="d-block w-100" alt="Trabajo digno" style="height: 380px; object-fit: cover;">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+              <h5>Futuro del trabajo</h5>
+              <p>Equidad, inclusión y no discriminación laboral.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselTrabajadores" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselTrabajadores" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+      
+      <div class="row g-4 mb-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-danger">
+            <div class="card-body"><h4>Lucha histórica</h4><p>Desde 1889, la Internacional Socialista declaró el 1 de Mayo como día de solidaridad obrera.</p></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-success"><div class="card-body"><h4>Bolivia líder sindical</h4><p>La COB (1952) y las conquistas de la Revolución Nacional.</p></div></div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-warning"><div class="card-body"><h4>Trabajo Decente</h4><p>Derechos fundamentales: sindicalización, negociación colectiva.</p></div></div>
+        </div>
+      </div>
+    `;
+  }
+
+  // ==================== PÁGINA HISTORIA (ACORDEÓN) ====================
+  function paginaHistoria() {
+    return `
+      <h2 class="border-start border-danger border-5 ps-3 mb-4"> Origen y evolución del 1ro de Mayo</h2>
+      <div class="accordion" id="accordionHistoria">
+        <div class="accordion-item">
+          <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">1. Revuelta de Haymarket (1886)</button></h2>
+          <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordionHistoria"><div class="accordion-body">El 1 de mayo de 1886, más de 300.000 trabajadores en Chicago exigieron la jornada de 8 horas. La represión policial y el estallido de una bomba derivaron en la ejecución de líderes anarquistas conocidos como los Mártires de Chicago.</div></div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">2. Proclamación en París (1889)</button></h2>
+          <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionHistoria"><div class="accordion-body">El Congreso Obrero Socialista de la Segunda Internacional declaró al 1 de Mayo como Día Internacional de los Trabajadores en memoria de los mártires de Chicago.</div></div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">3. Primer 1ro de Mayo en Bolivia</button></h2>
+          <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionHistoria"><div class="accordion-body">Las primeras conmemoraciones en Bolivia se remontan a inicios del siglo XX impulsadas por mutuales y artesanos. Se fortalece con la Revolución de 1952.</div></div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">4. Central Obrera Boliviana (1952)</button></h2>
+          <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionHistoria"><div class="accordion-body">Fundada en 1952, la COB unificó a trabajadores urbanos, mineros y campesinos, logrando avances como el Código de Trabajo.</div></div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">5. Reconocimiento actual y feriado</button></h2>
+          <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionHistoria"><div class="accordion-body">En Bolivia, el 1ro de Mayo es feriado nacional irrenunciable. Se realizan marchas y actos reivindicativos de derechos.</div></div>
+        </div>
+      </div>
+      <div class="alert alert-secondary mt-4"><i class="bi bi-info-circle"></i> El movimiento obrero boliviano es uno de los más combativos de Latinoamérica.</div>
+    `;
+  }
+
+  // ==================== PÁGINA DERECHOS LABORALES (TABLA) ====================
+  function paginaDerechos() {
+    return `
+      <h2 class="border-start border-danger border-5 ps-3"> Derechos fundamentales de los trabajadores en Bolivia</h2>
+      <p class="text-muted">Basados en la Constitución Política del Estado y el Código de Trabajo.</p>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+          <thead class="table-danger">
+            <tr><th>#</th><th>Derecho laboral</th><th>Descripción / Base legal</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Jornada máxima de 8 horas</td><td>Art. 46 Constitución, salvo excepciones legales, trabajo nocturno 7 horas.</td></tr>
+            <tr><td>2</td><td>Salario mínimo nacional digno</td><td>Ajuste anual mediante decreto, garantiza alimentación, vivienda, educación.</td></tr>
+            <tr><td>3</td><td>Libre sindicalización</td><td>Derecho a organizar sindicatos, afiliarse a la COB y huelga reconocida.</td></tr>
+            <tr><td>4</td><td>Seguridad social integral</td><td>Salud, riesgos profesionales, pensiones (Caja de Salud, AFP).</td></tr>
+            <tr><td>5</td><td>Vacaciones anuales pagadas</td><td>15 días hábiles por año trabajado y aguinaldo de Navidad.</td></tr>
+            <tr><td>6</td><td>Estabilidad laboral</td><td>Protección contra despido injustificado, indemnización por antigüedad.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-6"><div class="card bg-light"><div class="card-body"><i class="bi bi-check-circle-fill text-success"></i> <strong>Más conquistas:</strong> Fuero sindical, licencia por maternidad, prima de antigüedad, utilidades empresariales, seguro de desempleo parcial.</div></div></div>
+      </div>
+    `;
+  }
+
+  // ==================== PÁGINA GALERÍA (6 MODALES) ====================
+  function paginaGaleria() {
+    const imagenes = [
+      { id:1, titulo:"Marcha minera en Potosí", desc:"Miles de trabajadores mineros exigiendo mejoras en el siglo XX. Fuerza sindical boliviana.", url:"https://erbol.com.bo/sites/default/files/potosi-marcha-cooperativas-1111.jpg"},
+      { id:2, titulo:"1ro de Mayo en La Paz", desc:"Movilización desde la Plaza San Francisco hasta el Ministerio de Trabajo.", url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrvZOTm078Pzg6FFZh78Pe0yyWtwwmgFdzIA&s"},
+      { id:3, titulo:"Mujeres trabajadoras", desc:"Lucha por igualdad salarial y contra el acoso laboral en Bolivia.", url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8j12Vgn0bve1w3iZZngHTm-uzO7kc5QZicA&s"},
+      { id:4, titulo:"Homenaje a los mártires", desc:"Ofrenda floral y monumento en Chicago recordando la lucha obrera.", url:"https://picsum.photos/id/96/400/300"},
+      { id:5, titulo:"Sindicato fabril", desc:"Reunión de delegados fabriles en El Alto para negociar pliego petitorio.", url:"https://picsum.photos/id/48/400/300"},
+      { id:6, titulo:"Desfile del 1 de Mayo", desc:"Banderas de la COB, participación juvenil y música folklórica.", url:"https://picsum.photos/id/155/400/300"}
+    ];
+    
+    let cards = `<h2 class="border-start border-danger border-5 ps-3">Galería fotográfica del movimiento obrero</h2>
+    <div class="row g-4 mt-2">`;
+    
+    imagenes.forEach(img => {
+      cards += `
+        <div class="col-md-4 col-sm-6">
+          <div class="card h-100 shadow-sm galeria-img">
+            <img src="${img.url}" class="card-img-top card-img-top-custom" alt="${img.titulo}" style="cursor:pointer">
+            <div class="card-body text-center">
+              <h5 class="card-title">${img.titulo}</h5>
+              <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalGaleria${img.id}">Ver Detalle <i class="bi bi-zoom-in"></i></button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal fade" id="modalGaleria${img.id}" tabindex="-1" aria-labelledby="modalLabel${img.id}" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="modalLabel${img.id}">${img.titulo}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body text-center">
+                <img src="${img.url}" class="img-fluid rounded mb-3" alt="${img.titulo}">
+                <p>${img.desc}</p>
+                <p class="fst-italic">Día del trabajador - Memoria histórica</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+    cards += `</div><div class="mt-4 text-muted"><i class="bi bi-info-square"></i> Haz clic en cualquier botón para ampliar información (6 modales distintos)</div>`;
+    return cards;
+  }
+
+  // ==================== PÁGINA PERSONAJES BOLIVIANOS (LISTAS) ====================
+  function paginaPersonajes() {
+    return `
+      <h2 class="border-start border-danger border-5 ps-3"> 6 líderes del movimiento obrero boliviano</h2>
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-action"><strong>* Juan Lechín Oquendo</strong> (1920-2012) - Secretario Ejecutivo de la COB, líder minero y Vicepresidente de Bolivia. Símbolo de la lucha clasista.</li>
+            <li class="list-group-item list-group-item-action"><strong>* Domitila Barrios de Chungara</strong> (1937-2012) - Luchadora social minera, lideresa del Comité de Amas de Casa de Siglo XX, denunció dictaduras.</li>
+            <li class="list-group-item list-group-item-action"><strong>* Filemón Escóbar</strong> (1932-2018) - Dirigente fabril y fundador de la Central Obrera Boliviana. Defensor de los derechos colectivos.</li>
+            <li class="list-group-item list-group-item-action"><strong>* Marcelo Quiroga Santa Cruz</strong> (1931-1980) - Intelectual, político y dirigente social, asesinado por la dictadura, impulsor de la nacionalización.</li>
+            <li class="list-group-item list-group-item-action"><strong>* César Lora</strong> (1946-1971) - Líder minero asesinado en la masacre de la "noche de San Juan", mártir juvenil del sindicalismo.</li>
+            <li class="list-group-item list-group-item-action"><strong>* Víctor López Arias</strong> - Dirigente fabril y fundador de la Central Obrera Boliviana, clave en la Revolución de 1952.</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <div class="card border-danger">
+            <div class="card-header bg-danger text-white">Aportes sindicales históricos</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">* Lucha por las 8 horas mineras (años 1950)</li>
+              <li class="list-group-item">* Código de Trabajo promulgado en 1942</li>
+              <li class="list-group-item">* Defensa de recursos naturales nacionales</li>
+              <li class="list-group-item">*Participación en la Asamblea Popular de 1971</li>
+              <li class="list-group-item">* Renovación sindical de los años 80-90</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // ==================== PÁGINA FERIADO (BOTONES + MODALES) ====================
+  function paginaFeriado() {
+    return `
+      <h2 class="border-start border-danger border-5 ps-3">1ro de Mayo: Feriado nacional inamovible</h2>
+      <p>En Bolivia, el Día del Trabajador es feriado obligatorio con suspensión de actividades. ¡Conoce más detalles!</p>
+      <div class="row row-cols-1 row-cols-md-2 g-4 mb-4">
+        <div class="col"><div class="card h-100 text-center"><div class="card-body"><i class="bi bi-clock fs-1 text-danger"></i><h5>Jornada laboral reducida</h5><button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#modalFeriado1">Ver detalle</button></div></div></div>
+        <div class="col"><div class="card h-100 text-center"><div class="card-body"><i class="bi bi-cash-stack fs-1 text-success"></i><h5>Pago de salario íntegro</h5><button type="button" class="btn btn-secondary mt-2" data-bs-toggle="modal" data-bs-target="#modalFeriado2">Ver detalle</button></div></div></div>
+        <div class="col"><div class="card h-100 text-center"><div class="card-body"><i class="bi bi-people fs-1 text-warning"></i><h5>Actos oficiales</h5><button type="button" class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#modalFeriado3">Ver detalle</button></div></div></div>
+        <div class="col"><div class="card h-100 text-center"><div class="card-body"><i class="bi bi-building fs-1 text-info"></i><h5>Multas por incumplimiento</h5><button type="button" class="btn btn-dark mt-2" data-bs-toggle="modal" data-bs-target="#modalFeriado4">Ver detalle</button></div></div></div>
+        <div class="col"><div class="card h-100 text-center"><div class="card-body"><i class="bi bi-calendar-week fs-1 text-danger"></i><h5>Día no recuperable</h5><button type="button" class="btn btn-warning mt-2" data-bs-toggle="modal" data-bs-target="#modalFeriado5">Ver detalle</button></div></div></div>
+      </div>
+      
+      <!-- MODALES para cada botón -->
+      <div class="modal fade" id="modalFeriado1" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header bg-primary text-white"><h5>Jornada laboral 1ro de Mayo</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">Según DS 441, el feriado del trabajo aplica a todos los sectores públicos y privados. Ningún trabajador está obligado a trabajar, salvo servicios esenciales.</div><div class="modal-footer"><button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button></div></div></div></div>
+      
+      <div class="modal fade" id="modalFeriado2" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header bg-secondary text-white"><h5>Salario garantizado</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">El trabajador recibe su remuneración completa. Si labora en día feriado, se paga triple (100% + doble recargo).</div><div class="modal-footer"><button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button></div></div></div></div>
+      
+      <div class="modal fade" id="modalFeriado3" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header bg-danger text-white"><h5>Actos oficiales</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">Marchas, ferias del libro, teatro popular, discursos de dirigentes sindicales y actos de la COB en todo el país.</div><div class="modal-footer"><button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button></div></div></div></div>
+      
+      <div class="modal fade" id="modalFeriado4" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header bg-dark text-white"><h5>Sanciones económicas</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">Multas de hasta 10 salarios mínimos por obligar a trabajar sin justificación. Denuncias ante el Ministerio de Trabajo.</div><div class="modal-footer"><button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button></div></div></div></div>
+      
+      <div class="modal fade" id="modalFeriado5" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header bg-warning"><h5>Irrenunciabilidad</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">No se puede compensar con otro día. Es feriado obligatorio e irrenunciable. Excepciones: servicios de emergencia, salud, transporte (con descanso compensatorio).</div><div class="modal-footer"><button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button></div></div></div></div>
+    `;
+  }
+
+  // ==================== PÁGINA CONTACTO (FORMULARIO con 8 campos) ====================
+  function paginaContacto() {
+    return `
+      <h2 class="border-start border-danger border-5 ps-3"> Contáctanos - Homenaje al Trabajador</h2>
+      <p>Envíanos tus sugerencias, relatos sindicales o consultas sobre derechos laborales.</p>
+      
+      <form class="row g-3 p-4 border rounded shadow-sm bg-white">
+        <div class="col-md-6">
+          <label class="form-label fw-bold">Nombre completo *</label>
+          <input type="text" class="form-control" placeholder="Ej: María Choque Quispe" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-bold">Correo electrónico *</label>
+          <input type="email" class="form-control" placeholder="trabajador@ejemplo.bo" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-bold">Teléfono / Celular</label>
+          <input type="tel" class="form-control" placeholder="Ej: 76543210">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-bold">Región / Departamento</label>
+          <select class="form-select">
+            <option>La Paz</option>
+            <option>Santa Cruz</option>
+            <option>Cochabamba</option>
+            <option>Potosí</option>
+            <option>Oruro</option>
+            <option>Chuquisaca</option>
+            <option>Tarija</option>
+            <option>Beni</option>
+            <option>Pando</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label class="form-label fw-bold">Sindicato / Organización (opcional)</label>
+          <input type="text" class="form-control" placeholder="Ej: COB, FSTMB, Federación Fabril">
+        </div>
+        <div class="col-12">
+          <label class="form-label fw-bold">Tipo de consulta</label>
+          <div class="row">
+            <div class="col-md-4"><div class="form-check"><input class="form-check-input" type="radio" name="consultaTipo"> Derechos laborales</div></div>
+            <div class="col-md-4"><div class="form-check"><input class="form-check-input" type="radio" name="consultaTipo"> Historia del 1ro de Mayo</div></div>
+            <div class="col-md-4"><div class="form-check"><input class="form-check-input" type="radio" name="consultaTipo"> Aporte sindical / Personaje</div></div>
+          </div>
+        </div>
+        <div class="col-12">
+          <label class="form-label fw-bold">Mensaje / Consulta *</label>
+          <textarea class="form-control" rows="4" placeholder="Escribe aquí tu mensaje..." required></textarea>
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkAcepto" required>
+            <label class="form-check-label">Acepto los términos de privacidad y el tratamiento de mis datos</label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-danger px-4"><i class="bi bi-send"></i> Enviar mensaje</button>
+          <button type="reset" class="btn btn-outline-secondary ms-2"><i class="bi bi-arrow-repeat"></i> Limpiar formulario</button>
+        </div>
+      </form>
+      
+      <div class="alert alert-info mt-3">
+        <i class="bi bi-info-circle"></i> <strong>También puedes contactarnos:</strong> Redes sociales @TrabajadoresBolivia | WhatsApp +591 76543210 | Oficina COB La Paz
+      </div>
+    `;
+  }
+
+  // Eventos de navegación
+  document.querySelectorAll('[data-page]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const page = link.getAttribute('data-page');
+      cargarPagina(page);
+      
+      // Actualizar clase activa en navbar
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+  
+  // Cargar página de inicio por defecto
+  cargarPagina('inicio');
+</script>
+</body>
+</html>
